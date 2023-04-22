@@ -1,1 +1,7 @@
-<p>TODO: фильтры по категориям</p>
+<form #form="ngForm">
+  <div class="form-check form-switch"
+       *ngFor="let cat of repo.categories$ | async">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" [name]="cat.id.toString()" [(ngModel)]="model[cat.id]">
+    <label class="form-check-label" for="flexSwitchCheckDefault">{{ cat.name }}</label>
+  </div>
+</form>

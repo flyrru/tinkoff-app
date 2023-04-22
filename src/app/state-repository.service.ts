@@ -1,11 +1,11 @@
-import {createStore, select, withProps} from '@ngneat/elf';
+import {createStore, select, setProps, withProps} from '@ngneat/elf';
 import {Injectable, OnDestroy} from '@angular/core';
 import {
   addEntities,
   entitiesPropsFactory,
   getAllEntities,
   getAllEntitiesApply,
-  selectAllEntities, setEntities
+  selectAllEntities, setEntities, updateEntities
 } from '@ngneat/elf-entities';
 import {categoriesData, expensesData} from './mock-data';
 import {Expense, ExpenseCategory, ExpensesHistoryFilters} from './types';
@@ -69,6 +69,17 @@ export class StateRepositoryService implements OnDestroy {
   createCategory(category: ExpenseCategory) {
     const id= this.getNewId(categoriesEntitiesRef);
     this.store.update(addEntities({...category, id}, {ref: categoriesEntitiesRef}));
+  }
+
+  getCategories() {
+    return this.store.query(getAllEntities({ref: categoriesEntitiesRef}));
+  }
+
+  setFilterCategories(categoriesIds: number[]) {
+    const filters: ExpensesHistoryFilters = {
+      categoriesIds
+    }
+    this.store.update(setProps({filters}));
   }
 
   ngOnDestroy() {
