@@ -1,1 +1,28 @@
-test
+<aside class="px-2 py-4">
+  <div class="btn-group mx-auto mb-5 d-flex" dropdown  placement="bottom right">
+    <button dropdownToggle
+            type="button"
+            class="btn btn-primary dropdown-toggle">
+      Добавить расходы... <span class="caret"></span>
+    </button>
+    <ul *dropdownMenu class="dropdown-menu dropdown-menu-right">
+      <li role="menuitem" class="cursor-pointer"
+          *ngFor="let cat of repo.categories$ | async">
+        <span class="dropdown-item"
+              (click)="openNewExpenseModal(cat)">{{ cat.name }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <section class="mb-3">
+    <app-dates-range></app-dates-range>
+  </section>
+  <section class="mb-3">
+    <h5>Категории</h5>
+    <app-categories></app-categories>
+  </section>
+</aside>
+
+<main class="px-2 py-4">
+  <app-expenses-history class="mx-auto"></app-expenses-history>
+</main>

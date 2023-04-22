@@ -1,0 +1,11 @@
+@import "reset";
+@import "bootstrap.min.css";
+@import "~node_modules/ngx-bootstrap/datepicker/bs-datepicker.css";
+
+html, body {
+  height: 100vh;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

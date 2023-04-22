@@ -1,0 +1,46 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{ category.name }}</h4>
+  <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true" class="visually-hidden">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form #form=ngForm
+        (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="expenseSumInput"
+             class="form-label">Сколько</label>
+      <input type="text"
+             autocomplete="off"
+             class="form-control"
+             id="expenseSumInput"
+             name="expenseSumInput"
+             required
+             [(ngModel)]="sumModel"
+             placeholder="420.69">
+    </div>
+    <div class="mb-3">
+      <label for="expenseDateInput"
+             class="form-label">Когда</label>
+      <input type="text"
+             id="expenseDateInput"
+             placeholder="Сейчас"
+             class="form-control"
+             name="expenseDateInput"
+             [(ngModel)]="dateModel"
+             [bsConfig]="datePickerConfig"
+             bsDatepicker>
+    </div>
+    <div class="mb-3">
+      <label for="expenseCommentInput"
+             class="form-label">Комментарий</label>
+      <input type="text"
+             class="form-control"
+             id="expenseCommentInput"
+             name="expenseCommentInput"
+             [(ngModel)]="commentModel"
+             placeholder="Без комментариев">
+    </div>
+    <button type="submit" class="btn btn-primary d-block ms-auto" [disabled]="form.invalid">Добавить</button>
+  </form>
+</div>

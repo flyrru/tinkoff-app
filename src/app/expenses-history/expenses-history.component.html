@@ -1,0 +1,11 @@
+<ul class="list-group">
+  <li class="list-group-item"
+      *ngFor="let item of repo.filteredExpenses$ | async; trackBy: expensesTrackBy">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{ item.sum }} руб.</h5>
+      <small>{{ item.date | date }}</small>
+    </div>
+    <p class="mb-1">{{ item.category.name }}</p>
+    <small *ngIf="item.comment"><i>{{ item.comment }}</i></small>
+  </li>
+</ul>

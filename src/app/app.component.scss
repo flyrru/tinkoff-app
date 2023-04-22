@@ -1,0 +1,13 @@
+:host {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  height: 100%;
+}
+
+aside {
+  background-color: #fff2c3;
+}
+
+main {
+  overflow: auto;
+}
